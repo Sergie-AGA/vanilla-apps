@@ -1,0 +1,79 @@
+// PROJECT
+.project {
+  width: 90%;
+  max-width: 1200px;
+  margin: 2rem auto;
+  display: flex;
+  background-color: color(main-dark);
+  color: color(grey-1);
+  border-radius: 10px;
+  padding: 20px;
+  min-height: 12rem;
+  &:nth-of-type(2) {
+    flex-direction: row-reverse;
+    @media screen and (max-width: $mobile) {
+      flex-direction: column;
+    }
+  }
+  @media screen and (max-width: $mobile) {
+    flex-direction: column;
+  }
+  &__image-side {
+    width: 35%;
+    @media screen and (max-width: $mobile) {
+      width: 100%;
+    }
+  }
+  &__text-side {
+    width: 65%;
+    @media screen and (max-width: $mobile) {
+      width: 100%;
+    }
+  }
+  &__image {
+    display: block;
+    margin: auto;
+    width: 90%;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+  }
+  &__button {
+    margin: auto;
+    display: block;
+    width: 50%;
+    text-align: center;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: color(main);
+    font-family: $font-sans;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: 0.2s;
+    @media screen and (max-width: $mobile) {
+      width: 90%;
+    }
+    &:hover {
+      background-color: color(main-light);
+      color: black;
+    }
+    &:active {
+      transform: scale(0.95);
+    }
+  }
+  &__title {
+    text-align: justify;
+    font-family: $font-serif;
+    font-size: 2rem;
+    border-bottom: solid 2px #ddd;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+    @media screen and (max-width: $mobile) {
+      font-size: 1.5rem;
+    }
+  }
+  &__description {
+    text-align: justify;
+    font-family: $font-sans;
+    font-size: 1rem;
+  }
+}

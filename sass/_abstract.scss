@@ -1,0 +1,62 @@
+// IMPORTS
+@import url("https://fonts.googleapis.com/css2?family=Nerko+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&display=swap");
+
+// VARIABLES
+$colors: (
+  main: #16bf6e,
+  main-light: lighten(#16bf6e, 15%),
+  main-dark: darken(#16bf6e, 15%),
+  dark-main: #01930c,
+  light-main: #dff1e1,
+  grey-1: #ddd,
+  grey-2: darken(#ddd, 15%),
+  grey-3: darken(#ddd, 25%),
+  grey-4: transparentize(darken(#ddd, 65%), 0.4),
+  white: white,
+  greyed-out: #4f5b68,
+  positive: #0b7901,
+  positive2: #0e9901,
+  neutral: rgb(93, 114, 0),
+  neutral2: rgb(125, 153, 1),
+  negative: #8f0e00,
+  negative2: #bd1402,
+  warning: #f87d7d,
+  error: #fa9488,
+);
+
+$font-cursive: "Nerko One", cursive;
+$font-sans: "Ubuntu", sans-serif;
+$font-serif: "Playfair Display", serif;
+
+$tablet: 1024px;
+$mobile: 768px;
+$vertical: 550px;
+
+// FUNCTIONS
+@function color($color-name) {
+  @return map-get($colors, $color-name);
+}
+
+// MIXIN
+@mixin circle-button {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  text-align: center;
+  background-color: color(dark-main);
+  padding-top: 0.75rem;
+  color: color(grey-1);
+  font-size: 2.5rem;
+}
+
+@mixin centralized {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

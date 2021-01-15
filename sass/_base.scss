@@ -1,0 +1,80 @@
+// base
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+body {
+  box-sizing: border-box;
+  background-color: color(light-main);
+  position: relative;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+// TYPOGRAPHY
+h1,
+h2,
+h3 {
+  text-align: center;
+}
+
+.temp {
+  text-align: center;
+}
+// LINK RESET
+
+a {
+  text-decoration: none;
+  color: inherit;
+  &:visited {
+    color: inherit;
+  }
+}
+
+// BROWSER SUPPORT MESSAGE
+@supports (display: flex) and (display: grid) and
+  (
+    (perspective: 10px) or (-moz-perspective: 10px) or
+      (-webkit-perspective: 10px) or (-ms-perspective: 10px)
+  )
+  and
+  (
+    (-moz-clip-path: polygon(0 0, 60% 0, 40% 100%, 0% 100%)) or
+      (-webkit-clip-path: polygon(0 0, 60% 0, 40% 100%, 0% 100%)) or
+      (clip-path: polygon(0 0, 60% 0, 40% 100%, 0% 100%))
+  )
+  and
+  (
+    (-webkit-transform: translate(-50%, -50%) rotate(-130deg)) or
+      (-ms-transform: translate(-50%, -50%) rotate(-130deg)) or
+      (transform: translate(-50%, -50%) rotate(-130deg))
+  )
+  and
+  (
+    (-webkit-background-clip: text) or (-webkit-text-fill-color: transparent) or
+      (-moz-background-clip: text)
+  )
+  and (animation: change-position-shadow ease-in 1.5s forwards) {
+  .not-supported {
+    display: none;
+  }
+}
+
+.not-supported {
+  padding: 0;
+  margin: 0;
+  width: 90%;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: color(error);
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 5px;
+  padding: 5px;
+  background-color: color(dark-secondary);
+}

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/../css/style.css" />
+    <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon" />
+    <script
+      src="https://kit.fontawesome.com/549378180a.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>Custom Sticky Notes</title>
+  </head>
+  <body>
+    <p class="not-supported">
+      It seems your browser does not support some of the features used here and
+      they may not function properly. For a better experience, it is recommended
+      to update your browser
+    </p>
+
+    <h1 class="cursive-title blend">Custom Sticky Notes</h1>
+
+    <div id="buttonGroup" class="button-group">
+      <div id="logoArea" class="main-circle">
+        <i class="fas fa-sticky-note"></i>
+      </div>
+      <a href="https://mini-apps-by-sieger.netlify.app/"
+        ><i id="topCircle" class="fas fa-chevron-circle-left circle-button"></i
+      ></a>
+      <i id="diagonalCircle" class="fas fa-plus circle-button"></i>
+      <i id="rightCircle" class="far fa-question-circle circle-button"></i>
+    </div>
+
+    <div id="about" class="modal lower-position-modal invisible">
+      <p class="modal__text">
+        Custom Sticky Notes is a small project that allows you to create notes
+        that possess an image, a title and a description. Currently unavailable
+        for mobile use. Upcoming features include font size and note
+        proportions.
+      </p>
+      <p class="modal__text">
+        Simply click the "new sticky note" button to start creating. To make the
+        image work, you need the address that has the extension (.jpg / .png /
+        etc) in it.
+      </p>
+      <p class="modal__text">
+        Custom Sticky Notes is part of "Mini-Apps by Sergie", an ongoing project
+        aimed at showing how to make small web applications
+      </p>
+    </div>
+
+    <footer class="footer">
+      © <span id="currentYear" onload="updateYear()"></span> Mini-Apps by Sergie
+    </footer>
+
+    <div id="mainArea" class="main-area"></div>
+
+    <form class="edit-modal" id="editModal">
+      <fieldset class="block">
+        <label class="edit-modal__left edit-modal__text" for="noteTitle" noteT
+          >Title:</label
+        >
+        <input
+          class="edit-modal__right edit-modal__input"
+          id="modalTitle"
+          type="text"
+          name="noteTitle"
+        />
+      </fieldset>
+
+      <fieldset class="block">
+        <label class="edit-modal__left edit-modal__text" for="imageUrl"
+          >Image URL:</label
+        >
+        <input
+          class="edit-modal__right edit-modal__input"
+          id="modalImageUrl"
+          type="text"
+          name="imageUrl"
+        />
+      </fieldset>
+
+      <fieldset class="block">
+        <p class="edit-modal__left edit-modal__text">Image position:</p>
+        <input
+          class="edit-modal__center"
+          id="modalPosNone"
+          type="radio"
+          name="image-position"
+          value="top"
+          checked
+        />
+        <label class="edit-modal__text edit-modal__center" for="top"
+          >None</label
+        >
+        <input
+          class="edit-modal__center"
+          id="modalPosTop"
+          type="radio"
+          name="image-position"
+          value="top"
+        />
+        <label class="edit-modal__text edit-modal__center" for="top">Top</label>
+        <input
+          id="modalPosBackground"
+          type="radio"
+          name="image-position"
+          value="background"
+          class="edit-modal__center"
+        />
+        <label class="edit-modal__text edit-modal__center" for="background"
+          >Background</label
+        >
+      </fieldset>
+
+      <fieldset class="block">
+        <label class="edit-modal__left edit-modal__text" for="noteColor"
+          >Note color:</label
+        >
+        <input
+          id="modalNoteColor"
+          type="color"
+          name="noteColor"
+          value="#ffff88"
+        />
+      </fieldset>
+
+      <fieldset class="block">
+        <label class="edit-modal__left edit-modal__text" for="textColor"
+          >Text color:</label
+        >
+        <input
+          id="modalTextColor"
+          type="color"
+          name="textColor"
+          value="#000000"
+        />
+      </fieldset>
+      <div class="edit-modal__button-group">
+        <div class="edit-modal__button button--positive" id="saveButton">
+          Save changes
+        </div>
+        <div class="edit-modal__button button--neutral" id="cancelButton">
+          Cancel
+        </div>
+        <div class="edit-modal__button button--negative" id="deleteButton">
+          Delete note
+        </div>
+      </div>
+    </form>
+    <div id="deletePrompt" class="edit-modal__delete-prompt">
+      <p class="edit-modal__prompt-text">
+        Are you sure you want to delete this note? This action is
+        <span class="warning-text">irreversible</span>
+      </p>
+      <div class="inline-button-group">
+        <div id="confirmDelete" class="button button--negative">Delete</div>
+        <div id="cancelDelete" class="button button--neutral">Cancel</div>
+      </div>
+    </div>
+    <div id="layer" class="layer"></div>
+    <script src="script.js"></script>
+  </body>
+</html>

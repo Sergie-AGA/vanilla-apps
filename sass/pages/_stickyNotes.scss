@@ -1,0 +1,330 @@
+// Titles
+.cursive-title {
+  font-family: $font-cursive;
+  font-size: 5rem;
+  color: color(main-dark);
+  z-index: 1;
+}
+
+.blend {
+  opacity: 0.4;
+  position: absolute;
+  top: 0.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  user-select: none;
+}
+
+// Buttons
+.btn {
+  border-radius: 5px;
+  border: 2px solid color(dark-main);
+  padding: 3px;
+  margin: auto;
+  display: block;
+  width: fit-content;
+  color: color(main);
+  &:hover {
+    background-color: color(main-light);
+    color: white;
+  }
+}
+
+.circle-button {
+  @include circle-button;
+  cursor: pointer;
+  transition: 0.5s;
+  &:hover {
+    background-color: color(main);
+  }
+  &:active {
+    color: color(main-dark);
+  }
+}
+
+.main-circle {
+  @include circle-button;
+  z-index: 10;
+}
+
+.button-group {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 13rem;
+  height: 13rem;
+  z-index: 3;
+  &:hover {
+    #topCircle {
+      transform: translateY(-160%);
+    }
+    #diagonalCircle {
+      transform: translate(110%, -110%);
+    }
+    #rightCircle {
+      transform: translateX(160%);
+    }
+  }
+}
+
+.active-button {
+  color: color(main-dark);
+}
+
+.hover-text {
+  padding-top: 1rem;
+  font-size: 0.8rem;
+  font-family: $font-cursive;
+}
+
+.button {
+  padding: 8px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+  font-family: $font-sans;
+  &:active {
+    transform: scale(0.95);
+  }
+  &--positive {
+    background-color: color(positive);
+    &:hover {
+      background-color: color(positive2);
+    }
+  }
+  &--neutral {
+    background-color: color(neutral);
+    &:hover {
+      background-color: color(neutral2);
+    }
+  }
+  &--negative {
+    background-color: color(negative);
+    &:hover {
+      background-color: color(negative2);
+    }
+  }
+}
+
+.inline-button-group {
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  margin: auto;
+}
+
+// MODAL
+.modal {
+  padding: 10px;
+  border-radius: 10px;
+  background-color: color(grey-4);
+  width: 18rem;
+  &__text {
+    color: color(light-main);
+    text-align: justify;
+  }
+}
+
+.invisible {
+  display: none;
+}
+
+// LAYER
+.layer {
+  position: absolute;
+  top: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba($color: #000000, $alpha: 0.3);
+  z-index: 30;
+  transition: 0.4s;
+  display: none;
+}
+
+// MODAL
+.block {
+  border: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  width: 100%;
+  align-items: center;
+}
+
+.edit-modal {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translate(100%, -50%);
+  padding: 10px;
+  height: 100vh;
+  max-height: 30rem;
+  border: 1px solid color(grey-2);
+  border-radius: 10px 0 0 10px;
+  width: 100vw;
+  max-width: 25rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  background-color: color(grey-1);
+  z-index: 10;
+  transition: 0.6s;
+  box-shadow: 0 1px 2px 2px rgba($color: #000000, $alpha: 0.3);
+  &--active {
+    transform: translateY(-50%);
+  }
+  &__left {
+    width: 5.5rem;
+    text-align: right;
+  }
+  &__center {
+    margin: 0 0.1rem;
+  }
+  &__right {
+    flex-grow: 1;
+    margin-right: 1rem;
+  }
+  &__text {
+    margin-right: 1rem;
+    font-family: $font-sans;
+    font-size: 1rem;
+    font-weight: 500;
+  }
+  &__input {
+    padding: 6px;
+    height: 1.6rem;
+    outline: none;
+    border: 1px solid color(grey-1);
+    border-radius: 5px;
+    &:focus {
+      border-bottom: 3px solid color(main);
+    }
+  }
+  &__button-group {
+    height: 35%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
+  &__button {
+    margin: auto;
+    width: 80%;
+    border-radius: 10px;
+    height: 2.4rem;
+    padding: 5px;
+    box-shadow: 1px 1px 3px 2px rgba($color: #000000, $alpha: 0.3);
+    cursor: pointer;
+    font-family: $font-cursive;
+    color: color(grey-1);
+    font-size: 1.4rem;
+    transition: 0.3s;
+    &:hover {
+      transform: translateY(-4px);
+    }
+    &:active {
+      transform: translateY(-2px) scale(0.95);
+    }
+  }
+  &__delete-prompt {
+    position: absolute;
+    @include centralized;
+    border-radius: 10px;
+    padding: 15px;
+    background-color: color(warning);
+    color: white;
+    width: 15rem;
+    text-align: justify;
+    z-index: 40;
+    box-shadow: 1px 2px 3px 2px rgba($color: #000000, $alpha: 0.3);
+    display: none;
+  }
+  &__prompt-text {
+    font-family: $font-sans;
+    margin-bottom: 10px;
+  }
+}
+
+.warning-text {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+// STICKY NOTE
+.main-area {
+  z-index: 2;
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+
+.note {
+  width: 10rem;
+  height: 15rem;
+  background-color: #ffff88;
+  color: black;
+  font-family: $font-sans;
+  border: 1px solid black;
+  border-radius: 0 5px 5px 5px;
+  resize: both;
+  overflow: auto;
+  z-index: 10;
+  position: absolute;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-bottom: 1px solid black;
+    min-height: 2rem;
+    height: 5%;
+    cursor: move;
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    &__title {
+      text-align: justify;
+      width: 100%;
+      color: inherit;
+      padding: 3px;
+    }
+    &__edit {
+      width: 3rem;
+      position: relative;
+    }
+    &__icon {
+      color: inherit;
+      cursor: pointer;
+      transition: 0.3s;
+      border-radius: 5px;
+      border: 1px solid black;
+      margin-top: 2px;
+      padding: 3px;
+      &:hover {
+        color: color(grey-3);
+        border: 1px solid color(grey-1);
+      }
+      &:active {
+        transform: scale(0.95);
+      }
+    }
+  }
+  &__text {
+    width: 100%;
+    height: 85%;
+    // max-height: 100%;
+    // max-width: 100%;
+    border: none;
+    background-color: inherit;
+    color: inherit;
+    resize: none;
+    &:focus {
+      outline: none;
+    }
+  }
+}
