@@ -123,44 +123,64 @@ $(document).ready(function toast() {
 });
 
 // Floating iPhone
-const iphoneFloating = document.getElementById("iphoneFloating");
-const shadowFloating = document.getElementById("shadowFloating");
-const touchArea = document.getElementById("touchArea");
 let eventCount = 0;
 
-touchArea.addEventListener("touchstart", () => {
-  if (eventCount == 0) {
-    float();
-    eventCount++;
-  } else {
-    unfloat();
-    eventCount = 0;
-  }
-});
+$("#touchArea").on("touchstart", () => handleFloating());
+$("#touchArea").on("mouseenter", () => handleFloating());
+$("#touchArea").on("mouseleave", () => handleFloating());
 
 function float() {
-  iphoneFloating.classList.remove("change-position");
-  shadowFloating.classList.remove("change-position-shadow");
-  iphoneFloating.classList.add("change-back");
-  shadowFloating.classList.add("change-back-shadow");
+  $("#iphoneFloating").removeClass("change-position");
+  $("#shadowFloating").removeClass("change-position-shadow");
+  $("#iphoneFloating").addClass("change-back");
+  $("#shadowFloating").addClass("change-back-shadow");
+  $("#iphoneDisplay").removeClass("show-display");
   setTimeout(() => {
-    iphoneFloating.classList.remove("change-back");
-    shadowFloating.classList.remove("change-back-shadow");
-    iphoneFloating.classList.add("floating");
-    shadowFloating.classList.add("floating-shadow");
+    $("#iphoneFloating").removeClass("change-back");
+    $("#shadowFloating").removeClass("change-back-shadow");
+    $("#iphoneFloating").addClass("floating");
+    $("#shadowFloating").addClass("floating-shadow");
   }, 3000);
 }
 
 function unfloat() {
-  iphoneFloating.classList.remove("change-back");
-  shadowFloating.classList.remove("change-back-shadow");
-  iphoneFloating.classList.add("change-position");
-  shadowFloating.classList.add("change-position-shadow");
-  iphoneFloating.classList.remove("floating");
-  shadowFloating.classList.remove("floating-shadow");
+  $("#iphoneFloating").removeClass("change-back");
+  $("#shadowFloating").removeClass("change-back-shadow");
+  $("#iphoneFloating").addClass("change-position");
+  $("#shadowFloating").addClass("change-position-shadow");
+  $("#iphoneFloating").removeClass("floating");
+  $("#shadowFloating").removeClass("floating-shadow");
+  $("#iphoneDisplay").addClass("show-display");
 }
 
-document.addEventListener("DOMContentLoaded", float());
+function handleFloating() {
+  if (eventCount == 0) {
+    unfloat();
+    $("#iphoneDisplay").css("display", "block");
+    $("#iphoneDisplay").addClass("show-display");
+    eventCount++;
+  } else if (eventCount == 1) {
+    $("#iphoneDisplay").css("display", "none");
+    $("#iphoneDisplay").css("opacity", "0");
+    $("#iphoneDisplay").removeClass("show-display");
+    float();
+    eventCount++;
+  } else if (eventCount == 2) {
+    unfloat();
+    $("#iphoneDisplay").css("display", "block");
+    setTimeout(() => {
+      $("#iphoneDisplay").css("opacity", "1");
+    }, 3000);
+    eventCount = 3;
+  } else {
+    $("#iphoneDisplay").css("opacity", "0");
+    $("#iphoneDisplay").css("display", "none");
+    float();
+    eventCount = 2;
+  }
+}
+
+$(document).on("DOMContentLoaded", float());
 
 // AOS library
 AOS.init({

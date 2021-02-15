@@ -466,6 +466,7 @@ label {
   transform: translate(-50%, -50%);
   z-index: 50;
   text-align: center;
+  opacity: 0;
 }
 
 .display-light {
@@ -473,14 +474,13 @@ label {
   display: block;
   margin: 1rem auto;
   transition: all 0.5s ease 1.2s;
-  opacity: 0;
 }
 
-.iphone-container:hover .display-light {
-  animation: show-buttons ease-in 3.5s forwards;
+.show-display {
+  animation: show-display ease-in 3.5s forwards;
 }
 
-@keyframes show-buttons {
+@keyframes show-display {
   0% {
     opacity: 0;
   }
