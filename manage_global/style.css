@@ -609,6 +609,12 @@ label {
   margin: auto;
 }
 
+@media screen and (max-width: 480px) {
+  .iphone-message {
+    width: 80%;
+  }
+}
+
 /* footer */
 .footer {
   text-align: center;
