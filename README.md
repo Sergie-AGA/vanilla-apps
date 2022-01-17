@@ -1,6 +1,6 @@
 # vanilla-apps
 
-This is where vanilla Javascript apps from the mini-apps projects are hosted
+This is where apps from the mini-apps projects that do not use React are hosted, though the use of libraries such as jQuery may be included
 Mini-apps: https://github.com/Sergie-AGA/Mini_Apps
 
 Existing applications:
